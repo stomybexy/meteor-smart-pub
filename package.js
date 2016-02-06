@@ -2,7 +2,7 @@ Package.describe({
     name: 'jonatan:smart-pub',
     version: '0.0.1',
     // Brief, one-line summary of the package.
-    summary: 'Make publications qqueries available as Meteor methods.',
+    summary: 'Make publication query available as Meteor method.',
     // URL to the Git repository containing the source code for this package.
     git: '',
     // By default, Meteor will default to using README.md for documentation.

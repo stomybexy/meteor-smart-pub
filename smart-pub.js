@@ -2,7 +2,8 @@
 
 SmartPub = {
     smartPublish: smartPublish,
-    smartPublishComposite: smartPublishComposite
+    smartPublishComposite: smartPublishComposite,
+    isPublish: isPublish
 }
 function smartPublish(name, pubFunc) {
     if (Meteor.isServer) {
@@ -103,4 +104,14 @@ function createCompositeMethod(pub, parentName, meth) {
     _.each(pub.children, (child) => {
         createCompositeMethod(child, name, meth);
     });
+}
+
+function isPublish(this_arg) {
+    return Meteor.isServer && isPublishHandler(this_arg);
+}
+function isPublishHandler(this_arg) {
+    return this_arg && _.isFunction(this_arg.added) &&
+        _.isFunction(this_arg.changed) &&
+        _.isFunction(this_arg.removed) &&
+        _.isFunction(this_arg.ready);
 }
